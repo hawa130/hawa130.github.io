@@ -23,12 +23,9 @@
     <header id="header">
         <h1>树洞</h1>
     </header>
-    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
     <main id="app">
         <aside>
-            <p id="describe">
-               
-            </p>
+            <p id="hitokoto">ヾ(•ω•`)o</p>
         </aside>
         <p class="tip">现在总共有 {{count}} 条</p>
         <section class="item" v-for="item in contents" v-cloak>
@@ -44,6 +41,7 @@
         <p class="center-text">Copyright © 2020 hawa130, All Rights Reserved</p>
     </footer>
 </body>
+<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
 <script type="text/javascript">
