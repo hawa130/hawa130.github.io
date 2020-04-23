@@ -18,6 +18,10 @@
   <property name="windowTitle">
    <string>万金油客户端</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>oil.ico</normaloff>oil.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>

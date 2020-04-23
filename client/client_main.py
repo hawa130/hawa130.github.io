@@ -1,6 +1,7 @@
 import sys
 import requests
 import client_ui
+from os import remove
 from math import ceil
 from json import loads
 from time import sleep
@@ -97,6 +98,7 @@ class Window(client_ui.Ui_MainWindow, QMainWindow):
     conNum = 0      #项目总数
     skip = 0        #获取项目时跳过的项目数
     maxPage = 1     #最大页码
+    savedName = ''  #保存的名称
     def __init__(self):
         super(Window, self).__init__()
         self.setupUi(self)
@@ -104,6 +106,8 @@ class Window(client_ui.Ui_MainWindow, QMainWindow):
         self.checkBox_3.stateChanged.connect(self.toggleMonitor)
         self.textEdit.textChanged.connect(self.charCount)
         self.textEdit.setFocus()
+        self.readSaved()
+        self.lineEdit.setText(self.savedName)
         self.tableWidget.setColumnWidth(0, 340)
         self.tableWidget.setColumnWidth(1, 70)
         self.tableWidget.setColumnWidth(2, 110)
@@ -115,11 +119,32 @@ class Window(client_ui.Ui_MainWindow, QMainWindow):
         self.End.clicked.connect(self.setMaximum)
         self.spinBox.valueChanged.connect(self.updateListNum)
 
-    def push(self):
+    def readSaved(self): #读取记住的名称
+        try:
+            saved = open('savedName')
+        except FileNotFoundError:
+            pass
+        else:
+            self.savedName = saved.readline().replace('\n', '')
+            self.checkBox.setChecked(True)
+
+    def saveName(self): #记住名称
+        saved = open('savedName', 'w')
+        print(self.author, file = saved)
+        saved.close()
+
+    def push(self):     #发布内容
         self.pushButton.setText('发布中...')
         self.pushButton.setEnabled(False)
         self.context = self.textEdit.toPlainText()
         self.author = self.lineEdit.text()
+        if self.checkBox.isChecked():
+            self.saveName()
+        else:
+            try:
+                remove('savedName')
+            except FileNotFoundError:
+                pass
         self.thread = sendThread(self.context, self.author)
         self.thread.trigger.connect(self.updateStatus)
         self.thread.start()
@@ -190,11 +215,11 @@ class Window(client_ui.Ui_MainWindow, QMainWindow):
             item = QTableWidgetItem(string)
             self.tableWidget.setItem(num, col, item)
 
-    def copyToClip(self, row, col):
+    def copyToClip(self, row, col): #双击复制
         item = self.tableWidget.item(row, col)
         copy(item.text())
 
-    def updateListNum(self, num): #页码变更
+    def updateListNum(self, num):   #页码变更
         self.skip = (num - 1) * self.lineNum
         self.updateTable()
 
