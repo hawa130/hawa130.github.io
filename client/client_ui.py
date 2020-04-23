@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         font.setFamily("Microsoft YaHei UI")
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("oil.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icon/oil.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -249,3 +249,4 @@ class Ui_MainWindow(object):
         self.End.setText(_translate("MainWindow", "末页"))
         self.refreshButton.setText(_translate("MainWindow", "刷新"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "浏览"))
+import rec_rc
