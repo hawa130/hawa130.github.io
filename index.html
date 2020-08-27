@@ -1,236 +1,318 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>万金油</title>
-    <!-- <link rel="shortcut icon" href="./favicon.ico" /> -->
-    <link type="text/css" rel="stylesheet" href="https://at.alicdn.com/t/font_1755564_z4mhxbw13mq.css"></link>
-    <link href="https://fonts.loli.net/css?family=Noto+Serif+SC:200,300,900&display=swap&subset=chinese-simplified" rel="stylesheet">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="keywords" content="" />
-    <meta name="author" content="daibor" />
-    <meta charset="utf-8" />
-    <meta name="robots" content="index,follow" />
-    <meta name="google" content="index,follow" />
-    <meta name="googlebot" content="index,follow" />
-    <meta name="verify" content="index,follow" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset="UTF-8">
+    <title>蹭饭地图</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+
 </head>
-
 <body>
-    <header id="header">
-        <h1>万金油</h1>
-    </header>
-    <main id="app">
-        <aside>
-            <p id="hitokoto">ヾ(•ω•`)o</p>
-        </aside>
-        <p class="tip">现在总共有 {{count}} 条</p>
-        <section class="item" v-for="item in contents" v-cloak>
-            <p v-html='item.attributes.content'></p>
-            <time v-bind:datetime="item.attributes.time">{{item.attributes.time}}</time>
-        </section>
-        <div class="load-ctn">
-            <button class="load-btn" v-on:click="loadMore" v-if="contents" v-cloak>再翻翻</button>
-            <p class="tip" v-else>别急，加载呢</p>
-        </div>
-    </main>
-    <footer>
-        <p class="center-text">Copyright © 2020 hawa130, All Rights Reserved</p>
-    </footer>
-</body>
-<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-<script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
-<script type="text/javascript">
-    var {
-        Query
-    } = AV;
-    AV.init({
-        appId: "ABnYvjnyRufm05kdQu2SzSFj-MdYXbMMI", //你的 leancloud 应用 id （设置-应用keys-AppID）
-        appKey: "PhiYpUWiyAgVwKJIizK8tD8u", //你的 leancloud 应用 AppKey （设置-应用keys-AppKey）
-        //serverURLs: '国际版可删除该行，否则必须在后台绑定域名并填写在此'
-    });
-
-    var query = new AV.Query('content');
-
-    var app = new Vue({
-        el: '#app',
-        data: {
-            page: 0,
-            count: 0,
-            contents: []
+    <div id="9ade1efdee3f44319022d32531f49ab6" class="chart-container" style="width:1400px; height:700px;"></div>
+    <script>
+        var chart_9ade1efdee3f44319022d32531f49ab6 = echarts.init(
+            document.getElementById('9ade1efdee3f44319022d32531f49ab6'), 'white', {renderer: 'canvas'});
+        var option_9ade1efdee3f44319022d32531f49ab6 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "map",
+            "name": "\u9999\u6e2f-\u8463\u4f73\u6770-\n\u9999\u6e2f\u57ce\u5e02\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u9999\u6e2f",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
         },
-        methods: {
-            loadMore: function(event) {
-                getData(++this.page);
-            }
+        {
+            "type": "map",
+            "name": "\u5e7f\u5dde-\u6bb5\u73af\u5b87-\n\u5e7f\u4e1c\u5de5\u4e1a\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u5e7f\u4e1c",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u79e6\u7687\u5c9b-\u80e1\u51b0\u6d0b-\n\u71d5\u5c71\u5927\u5b66\u91cc\u4ec1\u5b66\u9662",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u6cb3\u5317",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u5e7f\u5dde-\u82d7\u5baa\u6977-\n\u534e\u5357\u7406\u5de5\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u5e7f\u4e1c",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u6d4e\u5357-\u65bd\u6811\u7fd4-\n\u6d4e\u5357\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u5c71\u4e1c",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u5357\u4eac-\u5b59\u4e07\u6866-\n\u5357\u4eac\u7406\u5de5\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u6c5f\u82cf",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u897f\u5b89-\u738b\u6dd1\u9773-\n\u897f\u5b89\u7535\u5b50\u79d1\u6280\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u9655\u897f",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u5929\u6d25-\u6768\u695a\u6db5-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u5929\u6d25",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
+        },
+        {
+            "type": "map",
+            "name": "\u5929\u6d25-\u9648\u79b9\u9f50-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            },
+            "mapType": "china",
+            "data": [
+                {
+                    "name": "\u5929\u6d25",
+                    "value": 1
+                }
+            ],
+            "roam": true,
+            "zoom": 1,
+            "showLegendSymbol": false,
+            "emphasis": {}
         }
-    })
-
-    function urlToLink(str) {
-        var re = /(http|ftp|https):\/\/[\w-]+(.[\w-]+)+([\w-.,@?^=%&:/~+#]*[\w-\@?^=%&/~+#])?/g;;
-
-        str = str.replace(re, function(website) {
-            return "<a href='" + website + "' target='_blank'> <i class='iconfont icon-lianjie-copy'></i>链接 </a>";
-        });
-        return str;
-    }
-
-    function getData(page = 0) {
-        query.descending('createdAt').skip(page * 20).limit(20).find().then(function(results) {
-            if (results.length == 0) {
-                alert('没有了 ╮（╯＿╰）╭')
-            } else {
-                let resC = results;
-                reqData = false;
-                resC.forEach((i) => {
-                    let dateTmp = new Date(i.createdAt);
-                    i.attributes.time = i.attributes.author + "　" + `${dateTmp.getFullYear()}-${(dateTmp.getMonth() + 1) < 10 ? ('0' + (dateTmp.getMonth()+1)) : dateTmp.getMonth()+1}-${(dateTmp.getDate() + 1) < 10 ? ('0' + dateTmp.getDate()) : dateTmp.getDate()} ${(dateTmp.getHours() + 1) <= 10 ? ('0' + dateTmp.getHours()) : dateTmp.getHours()}:${(dateTmp.getMinutes() + 1) <= 10 ? ('0' + dateTmp.getMinutes()) : dateTmp.getMinutes()}`;
-                    i.attributes.content = "<span>" + urlToLink(i.attributes.content) + "</span>";
-                    app.contents.push(i);
-                })
-            }
-
-        }, function(error) {});
-    }
-
-    getData(0);
-
-    query.count().then(function(count) {
-        app.count = count;
-    }, function(error) {});
-</script>
-<style type="text/css">
-    @media (prefers-color-scheme: dark) {
-        /* 夜间模式 */
-        body {
-            background-color: black;
-            color: white;
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u9999\u6e2f-\u8463\u4f73\u6770-\n\u9999\u6e2f\u57ce\u5e02\u5927\u5b66",
+                "\u5e7f\u5dde-\u6bb5\u73af\u5b87-\n\u5e7f\u4e1c\u5de5\u4e1a\u5927\u5b66",
+                "\u79e6\u7687\u5c9b-\u80e1\u51b0\u6d0b-\n\u71d5\u5c71\u5927\u5b66\u91cc\u4ec1\u5b66\u9662",
+                "\u5e7f\u5dde-\u82d7\u5baa\u6977-\n\u534e\u5357\u7406\u5de5\u5927\u5b66",
+                "\u6d4e\u5357-\u65bd\u6811\u7fd4-\n\u6d4e\u5357\u5927\u5b66",
+                "\u5357\u4eac-\u5b59\u4e07\u6866-\n\u5357\u4eac\u7406\u5de5\u5927\u5b66",
+                "\u897f\u5b89-\u738b\u6dd1\u9773-\n\u897f\u5b89\u7535\u5b50\u79d1\u6280\u5927\u5b66",
+                "\u5929\u6d25-\u6768\u695a\u6db5-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66",
+                "\u5929\u6d25-\u9648\u79b9\u9f50-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66"
+            ],
+            "selected": {
+                "\u9999\u6e2f-\u8463\u4f73\u6770-\n\u9999\u6e2f\u57ce\u5e02\u5927\u5b66": true,
+                "\u5e7f\u5dde-\u6bb5\u73af\u5b87-\n\u5e7f\u4e1c\u5de5\u4e1a\u5927\u5b66": true,
+                "\u79e6\u7687\u5c9b-\u80e1\u51b0\u6d0b-\n\u71d5\u5c71\u5927\u5b66\u91cc\u4ec1\u5b66\u9662": true,
+                "\u5e7f\u5dde-\u82d7\u5baa\u6977-\n\u534e\u5357\u7406\u5de5\u5927\u5b66": true,
+                "\u6d4e\u5357-\u65bd\u6811\u7fd4-\n\u6d4e\u5357\u5927\u5b66": true,
+                "\u5357\u4eac-\u5b59\u4e07\u6866-\n\u5357\u4eac\u7406\u5de5\u5927\u5b66": true,
+                "\u897f\u5b89-\u738b\u6dd1\u9773-\n\u897f\u5b89\u7535\u5b50\u79d1\u6280\u5927\u5b66": true,
+                "\u5929\u6d25-\u6768\u695a\u6db5-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66": true,
+                "\u5929\u6d25-\u9648\u79b9\u9f50-\n\u6cb3\u5317\u5de5\u4e1a\u5927\u5b66": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
         }
-        body .item {
-            border-top: 6px solid #888888;
-            background-color: rgb(21, 32, 43);
-            color: #ccc;
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u8e6d\u996d\u56fe",
+            "padding": 5,
+            "itemGap": 10
         }
-        body time {
-            color: #aaa;
-        }
-        h1 {
-            color: #ffffff;
-        }
-        aside {
-            color: #ccc;
-        }
-        body .load-btn {
-            background-color: #000;
-            color: #ddd;
-        }
-        body .load-btn:hover:active {
-            background: #1DA1F2;
-            color: #fff;
-        }
+    ],
+    "visualMap": {
+        "show": true,
+        "type": "piecewise",
+        "min": -1,
+        "max": 3,
+        "text": [
+            "\u533a\u95f4",
+            ""
+        ],
+        "inRange": {
+            "color": [
+                "#50a3ba",
+                "#eac763",
+                "#d94e5d"
+            ]
+        },
+        "calculable": true,
+        "inverse": false,
+        "splitNumber": 4,
+        "orient": "vertical",
+        "left": "left",
+        "top": "middle",
+        "showLabel": true,
+        "itemWidth": 20,
+        "itemHeight": 14,
+        "borderWidth": 0
     }
-    
-    [v-cloak] {
-        display: none;
-    }
-    
-    html {
-        font-size: 18px;
-    }
-    
-    body,
-    button {
-        font-family: 'Roboto', 'Noto Sans SC', sans-serif;
-    }
-    
-    aside {
-        font-weight: 300;
-        font-style: normal;
-        line-height: 1.8rem;
-    }
-    
-    #app,
-    header,
-    footer {
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 732px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    h1 {
-        font-weight: 900;
-    }
-    
-    footer {
-        font-size: 0.8rem;
-        clear: both;
-    }
-    
-    .tip {
-        color: #999;
-        font-size: smaller;
-    }
-    
-    .item {
-        font-weight: 300;
-        font-style: normal;
-        line-height: 1.8rem;
-        background: #fff;
-        padding: 10px 28px;
-        border-radius: 5px;
-        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-        margin-top: 20px;
-        border-top: 6px solid;
-        text-align: initial;
-    }
-    
-    .item a {
-        text-decoration: none;
-        color: #5dafd5;
-    }
-    
-    #hitokoto,
-    header {
-        font-family: 'Noto Serif SC', serif;
-    }
-
-    time {
-        font-weight: 200;
-        font-size: medium;
-        color: #bbb;
-    }
-    
-    .center-text {
-        text-align: center;
-    }
-    
-    .load-ctn {
-        width: 100%;
-    }
-    
-    .load-btn {
-        border: 2px solid #666;
-        width: 130px;
-        outline: none;
-        font-size: 18px;
-        border-radius: 100px;
-        margin: 30px auto;
-        color: #666;
-        line-height: 30px;
-        float: right;
-        background: #fff;
-    }
-    
-    .load-btn:hover:active {
-        background: #666;
-        color: #fff;
-    }
-</style>
-
+};
+        chart_9ade1efdee3f44319022d32531f49ab6.setOption(option_9ade1efdee3f44319022d32531f49ab6);
+    </script>
+</body>
 </html>
