@@ -1,3 +1,5 @@
+一个名人名言收集网站及上传用客户端。
+
 # hawa130.github.io
 [网站链接](https://hawa130.github.io/)
 
