@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>登录</title>
+	<style type="text/css">
+		* {
+			outline: none;
+		}
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.hover:hover {
+			transition: all 0.2s ease;
+			box-shadow: 2px 2px 10px #00000090;
+		}
+
+		.hover:focus, .hover:active {
+			transition: all 0.2s ease;
+			border: 1px;
+			border-color: #03a9f4;
+			box-shadow: inset 2px 2px 10px #00000090;
+		}
+
+		.bg {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background: url("/img/login_bg.png") no-repeat fixed;
+			background-size: cover;
+			box-sizing: border-box;
+		}
+
+		.login_box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 400px;
+			height: 300px;
+			background-color: #10101090;
+			border-radius: 15px;
+			color: white;
+			backdrop-filter: blur(10px);
+			box-shadow: 2px 2px 30px black;
+		}
+
+		form {
+			position: relative;
+			top: 45%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		#table {
+			margin: 0px auto;
+		}
+
+		#login {
+			text-align: center;
+		}
+
+		td {
+			padding-top: 10px;
+			padding-right: 10px;
+		}
+
+		button {
+			margin: 20px;
+			width: 150px;
+			height: 35px;
+			border: 0px;
+			border-radius: 3px;
+			background-color: #03a9f4;
+			color: white;
+		}
+
+		.text {
+			width: 200px;
+			height: 30px;
+			background-color: #202020a0;
+			color: white;
+			border: 0px;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="login_box">
+			<form id="login" action="qwq.php" method="post">
+				<p>DefFrancis の博客登录</p>
+				<table id="table">
+					<tr>
+						<td align="right">用户名</td>
+						<td><input type="text" name="uname" class="text hover"></td>
+					</tr>
+					<tr>
+						<td align="right">密码</td>
+						<td><input type="password" name="pwd" class="text hover"></td>
+					</tr>
+				</table>
+				<button class="hover">登录</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
