@@ -10,7 +10,8 @@
 			border: 1px solid transparent;
 		}
 
-		html, body {
+		html,
+		body {
 			margin: 0;
 			padding: 0;
 			width: 100%;
@@ -22,7 +23,8 @@
 			box-shadow: 2px 2px 10px #00000090;
 		}
 
-		.hover:focus, .hover:active {
+		.hover:focus,
+		.hover:active {
 			transition: all 0.3s ease;
 			border: 1px solid #1565c0;
 			border-color: #03a9f4;
@@ -35,7 +37,7 @@
 			width: 100%;
 			height: 100%;
 			position: relative;
-			background: url("https://acg.toubiec.cn/random.php") no-repeat fixed;
+			background: url(https://acg.toubiec.cn/random.php) no-repeat fixed;
 			background-size: cover;
 			box-sizing: border-box;
 		}
@@ -56,7 +58,7 @@
 
 		form {
 			position: relative;
-			top: 45%;
+			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
@@ -70,8 +72,11 @@
 		}
 
 		td {
-			padding-top: 10px;
-			padding-right: 10px;
+			padding: 5px;
+		}
+
+		td .icon {
+			margin-top: 6px;
 		}
 
 		button {
@@ -84,10 +89,11 @@
 		}
 
 		.text {
+			padding-left: 10px;
 			width: 200px;
 			height: 30px;
 			background-color: #202020a0;
-			color: white;
+			color: #ffffff;
 			border-radius: 3px;
 		}
 	</style>
@@ -96,15 +102,15 @@
 	<div class="bg">
 		<div class="login_box">
 			<form id="login">
-				<p>DefFrancis の博客登录</p>
+				<h3>hawa130 の博客登录</h3>
 				<table id="table">
 					<tr>
-						<td align="right">用户名</td>
-						<td><input type="text" name="uname" class="text hover"></td>
+						<td align="right"><img src="img/user.svg" alt="username" height="18" class="icon"></td>
+						<td><input type="text" name="uname" class="text hover" placeholder="用户名"></td>
 					</tr>
 					<tr>
-						<td align="right">密码</td>
-						<td><input type="password" name="pwd" class="text hover"></td>
+						<td align="right"><img src="img/pwd.svg" alt="password" height="18" class="icon"></td>
+						<td><input type="password" name="pwd" class="text hover" placeholder="密码"></td>
 					</tr>
 				</table>
 				<button class="hover">登录</button>
