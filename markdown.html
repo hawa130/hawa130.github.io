@@ -61,6 +61,7 @@
 			background-color: #fff;
 			border-radius: 8px;
 			padding: 15px;
+			tab-size: 4;
 		}
 		p code {
 			box-sizing: content-box;
@@ -85,12 +86,12 @@
 		var md = window.markdownit({
 			html: true,
 			highlight: function (str, lang) {
-			  if (lang && hljs.getLanguage(lang)) {
-				try {
-				  return hljs.highlight(lang, str).value;
-				} catch (__) {}
-			  }
-			  return '';
+				if (lang && hljs.getLanguage(lang)) {
+					try {
+						return hljs.highlight(lang, str).value;
+					} catch (__) {}
+				}
+				return '';
 			}
 		});
 		md.use(window.markdownitLatex2img);
