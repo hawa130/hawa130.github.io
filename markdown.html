@@ -5,8 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Markdown Editor</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-	<link rel="stylesheet"
-	      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow.min.css">
 	<style type="text/css">
 		* {
 			outline: none;
@@ -18,24 +17,25 @@
 		html, body {
 			height: 100%;
 			background-color: #f5f5f5;
-			overflow-y:hidden;
+			overflow: hidden;
 			display: flex;
 			flex-direction: column;
 		}
 		.nav {
 			height: 40px;
 			background-color: #404040;
-			padding: 5px 20px;
+			padding: 6px 20px;
 		}
 		.logo {
 			height: 100%;
 			color: #fff;
-			font-size: 21px;
+			font-size: 19px;
 		}
 		.container {
 			flex: 1;
 			display: flex;
 			height: 95%;
+			overflow: hidden;
 		}
 		.left-box,
 		.right-box{
@@ -56,6 +56,8 @@
 			max-width: 100%;
 		}
 		pre {
+			max-width: 100%;
+			overflow: auto;
 			background-color: #fff;
 			border-radius: 8px;
 			padding: 15px;
@@ -67,28 +69,35 @@
 			padding: 3px;
 		}
 		ul, ol {
-		    padding: 0;
-		    margin: 0 0 10px 25px;
+			padding: 0;
+			margin: 0 0 10px 25px;
 		}
 	</style>
 	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/markdown-it-latex2img@latest/dist/markdown-it-latex2img.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-latex2img@0.0.6/dist/markdown-it-latex2img.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-footnote@3.0.2/dist/markdown-it-footnote.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-mark@3.0.1/dist/markdown-it-mark.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-abbr@1.0.4/dist/markdown-it-abbr.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-ins@3.0.1/dist/markdown-it-ins.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/markdown-it@12.0.4/dist/markdown-it.min.js"></script>
 	<script type="text/javascript">
 		var md = window.markdownit({
 			html: true,
 			highlight: function (str, lang) {
 			  if (lang && hljs.getLanguage(lang)) {
-			    try {
-			      return hljs.highlight(lang, str).value;
-			    } catch (__) {}
+				try {
+				  return hljs.highlight(lang, str).value;
+				} catch (__) {}
 			  }
-
 			  return '';
 			}
 		});
 		md.use(window.markdownitLatex2img);
+		md.use(window.markdownitFootnote);
+		md.use(window.markdownitMark);
+		md.use(window.markdownitAbbr);
+		md.use(window.markdownitIns);
 		function markdown(text) {
 			return md.render(text);
 		}
