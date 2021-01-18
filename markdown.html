@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Input</title>
+	<title>Markdown Editor</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+	<link rel="stylesheet"
+	      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/tomorrow.min.css">
 	<style type="text/css">
 		* {
 			outline: none;
@@ -49,12 +52,45 @@
 			overflow-y: auto;
 			font-family: sans-serif;
 		}
+		img {
+			max-width: 100%;
+		}
+		pre {
+			background-color: #fff;
+			border-radius: 8px;
+			padding: 15px;
+		}
+		p code {
+			box-sizing: content-box;
+			background-color: #fff;
+			border-radius: 5px;
+			padding: 3px;
+		}
+		ul, ol {
+		    padding: 0;
+		    margin: 0 0 10px 25px;
+		}
 	</style>
 	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-latex2img@latest/dist/markdown-it-latex2img.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it@12.0.4/dist/markdown-it.min.js"></script>
 	<script type="text/javascript">
-		var markdown = function(text) {
-			return marked(text);
+		var md = window.markdownit({
+			html: true,
+			highlight: function (str, lang) {
+			  if (lang && hljs.getLanguage(lang)) {
+			    try {
+			      return hljs.highlight(lang, str).value;
+			    } catch (__) {}
+			  }
+
+			  return '';
+			}
+		});
+		md.use(window.markdownitLatex2img);
+		function markdown(text) {
+			return md.render(text);
 		}
 	</script>
 </head>
@@ -67,7 +103,7 @@
 			<textarea v-model="input" class="left context" autofocus="autofocus"></textarea>
 		</div>
 		<div class="right-box">
-			<div class="right context" v-html="markdown(input)"></div>
+			<div class="right context" id="output" v-html="markdown(input)"></div>
 		</div>
 	</div>
 	<script>
