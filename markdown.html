@@ -103,6 +103,7 @@
 			localStorage.setItem('context', text);
 			return md.render(text);
 		}
+		var init = localStorage.getItem('context');
 	</script>
 </head>
 <body>
@@ -124,7 +125,7 @@
 				input: ''
 			}
 		})
-		vm.input = localStorage.getItem('context');
+		vm.input = init;
 		var l = document.querySelector('.left');
 		var r = document.querySelector('.right');
 		var scale = 1;
